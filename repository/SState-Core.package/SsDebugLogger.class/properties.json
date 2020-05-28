@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "SState-Core",
+	"classinstvars" : [
+		"default"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"actualLogger",
+		"isActive"
+	],
+	"name" : "SsDebugLogger",
+	"type" : "normal"
+}

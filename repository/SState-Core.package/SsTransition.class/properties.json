@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "SsObject",
+	"category" : "SState-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"nextStateId",
+		"guardCondition",
+		"action"
+	],
+	"name" : "SsTransition",
+	"type" : "normal"
+}

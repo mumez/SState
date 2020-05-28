@@ -1,0 +1,3 @@
+testing
+hasParentState
+	^parentState notNil

@@ -1,0 +1,4 @@
+exceptionDescription
+defaultAction
+	
+	^nil

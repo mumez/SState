@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "SsTransition",
+	"category" : "SState-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"trueStateId",
+		"falseStateId"
+	],
+	"name" : "SsDecision",
+	"type" : "normal"
+}

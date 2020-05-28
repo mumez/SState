@@ -1,0 +1,1 @@
+SystemOrganization addCategory: #'SState-Core'!
