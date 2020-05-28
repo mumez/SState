@@ -1,3 +1,0 @@
-accessing-substates
-currentSubState
-	^self subStateMachine currentState
