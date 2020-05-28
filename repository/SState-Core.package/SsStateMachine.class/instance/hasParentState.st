@@ -1,3 +1,0 @@
-testing
-hasParentState
-	^parentState notNil
