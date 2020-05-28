@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "SState-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"handled",
+		"arguments",
+		"type"
+	],
+	"name" : "SsEvent",
+	"type" : "normal"
+}

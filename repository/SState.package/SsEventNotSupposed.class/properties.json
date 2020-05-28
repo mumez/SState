@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "Warning",
+	"category" : "SState-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"event",
+		"state"
+	],
+	"name" : "SsEventNotSupposed",
+	"type" : "normal"
+}

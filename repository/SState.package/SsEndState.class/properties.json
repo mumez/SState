@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "SsState",
+	"category" : "SState-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "SsEndState",
+	"type" : "normal"
+}

@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "SState-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"currentState",
+		"stateDict",
+		"transDict",
+		"listeners",
+		"startState",
+		"context"
+	],
+	"name" : "SsStateMachine",
+	"type" : "normal"
+}

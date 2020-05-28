@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "SsStateMachine",
+	"category" : "SState-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"changes"
+	],
+	"name" : "SsTestSubStateMachine",
+	"type" : "normal"
+}
