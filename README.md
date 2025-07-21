@@ -1,4 +1,7 @@
 # SState
+
+[![smalltalkCI](https://github.com/mumez/SState/actions/workflows/main.yml/badge.svg)](https://github.com/mumez/SState/actions/workflows/main.yml)
+
 A simple Finite State Machine for Smalltalk
 
 ## Features
@@ -16,7 +19,7 @@ SState is a fairly simple FSM implementation, but is functional:
 ```smalltalk
 Metacello new
   baseline: 'SState';
-  repository: 'github://mumez/SState/repository';
+  repository: 'github://mumez/SState/src';
   load.
 ```
 
