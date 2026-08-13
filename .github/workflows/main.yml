@@ -12,8 +12,8 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: hpi-swa/setup-smalltalkCI@v1
+      - uses: actions/checkout@v7
+      - uses: hpi-swa/setup-smalltalkCI@1.6.0
         with:
           smalltalk-image: ${{ matrix.smalltalk }}
       - run: smalltalkci -s ${{ matrix.smalltalk }}
