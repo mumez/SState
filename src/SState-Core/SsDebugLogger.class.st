@@ -33,9 +33,8 @@ Class {
 }
 
 { #category : 'class initialization' }
-SsDebugLogger class >> default [ 
-	default isNil ifTrue: [default := self new].
-	^default
+SsDebugLogger class >> default [
+	^default ifNil: [default := self new]
 ]
 
 { #category : 'class initialization' }
@@ -76,8 +75,7 @@ SsDebugLogger >> info: anObject [
 
 { #category : 'testing' }
 SsDebugLogger >> isActive [
-	isActive isNil ifTrue: [isActive := false].
-	^isActive
+	^isActive ifNil: [isActive := false]
 ]
 
 { #category : 'accessing' }

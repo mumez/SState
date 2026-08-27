@@ -78,7 +78,7 @@ SsState >> activity: aBlockOrMessageSend [
 SsState >> basicHandleEvent: anEvent [ 
 	| transId |
 	transId := self findTransId: anEvent.
-	transId isNil ifFalse: [self activateTransitionAt: transId for: anEvent].
+	transId ifNotNil: [self activateTransitionAt: transId for: anEvent].
 	(anEvent handled not and: [self subStateMachine notNil]) ifTrue: [self subStateMachine handleEvent: anEvent]
 ]
 
@@ -112,8 +112,7 @@ SsState >> endWhen: anEventOrSymbol guarded: guardCondition [
 SsState >> enter [
 	self debug: '#enter'.
 	self entryAction ifNotNil: [:act | act cull: self context cull: self currentEvent].
-	self subStateMachine notNil
-		ifTrue: [self subStateMachine start]
+	self subStateMachine ifNotNil: [:sm | sm start]
 ]
 
 { #category : 'accessing' }
@@ -130,9 +129,9 @@ SsState >> entryAction: aBlockOrMessageSend [
 SsState >> exit [
 	self debug: '#exit'.
 	self exitAction ifNotNil: [:act | act cull: self context cull: self currentEvent].
-	self subStateMachine notNil
-		ifTrue: [self subStateMachine currentState exit.
-				self subStateMachine reset]
+	self subStateMachine ifNotNil: [:sm |
+		sm currentState exit.
+		sm reset]
 ]
 
 { #category : 'accessing' }
@@ -195,8 +194,7 @@ SsState >> subStateMachine: aStateMachine [
 
 { #category : 'accessing' }
 SsState >> transDict [
-	transDict isNil ifTrue: [ transDict := IdentityDictionary new].
-	^transDict
+	^transDict ifNil: [transDict := IdentityDictionary new]
 ]
 
 { #category : 'actions-event' }

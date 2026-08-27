@@ -22,8 +22,7 @@ SsEvent class >> type: aSymbol arguments: args [
 
 { #category : 'accessing' }
 SsEvent >> arguments [
-	arguments isNil ifTrue:[arguments := Array new].
-	^arguments
+	^arguments ifNil: [arguments := Array new]
 ]
 
 { #category : 'accessing' }
@@ -33,8 +32,7 @@ SsEvent >> arguments: anArray [
 
 { #category : 'accessing' }
 SsEvent >> handled [
-	handled isNil ifTrue:[handled := false].
-	^handled
+	^handled ifNil: [handled := false]
 ]
 
 { #category : 'accessing' }

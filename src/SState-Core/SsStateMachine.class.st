@@ -90,8 +90,7 @@ SsStateMachine >> changeStateTo: aStateSymbol on: anEvent [
 
 { #category : 'accessing' }
 SsStateMachine >> context [
-	context isNil ifTrue: [context := Dictionary new].
-	^context
+	^context ifNil: [context := Dictionary new]
 ]
 
 { #category : 'accessing' }
@@ -144,8 +143,7 @@ SsStateMachine >> initialize [
 
 { #category : 'accessing' }
 SsStateMachine >> listeners [
-	listeners isNil ifTrue:[ listeners := OrderedCollection new].
-	^listeners
+	^listeners ifNil: [listeners := OrderedCollection new]
 ]
 
 { #category : 'accessing' }
@@ -157,8 +155,7 @@ SsStateMachine >> listeners: anOrderedCollection [
 SsStateMachine >> recurCurrentState [
 	| state |
 	state := self currentState.
-	state isNil
-		ifTrue: [^ self].
+	state ifNil: [^ self].
 	[state hasSubStates]
 		whileTrue: [state := state currentSubState].
 	^ state
@@ -232,8 +229,7 @@ SsStateMachine >> stateAt: aStateName put: aState [
 
 { #category : 'accessing' }
 SsStateMachine >> stateDict [
-	stateDict isNil ifTrue:[stateDict := IdentityDictionary new].
-	^stateDict
+	^stateDict ifNil: [stateDict := IdentityDictionary new]
 ]
 
 { #category : 'accessing' }
@@ -259,8 +255,7 @@ SsStateMachine >> transAt: aTransitionId put: aTransition [
 
 { #category : 'accessing' }
 SsStateMachine >> transDict [
-	transDict isNil ifTrue:[transDict := IdentityDictionary new].
-	^transDict
+	^transDict ifNil: [transDict := IdentityDictionary new]
 ]
 
 { #category : 'accessing' }
