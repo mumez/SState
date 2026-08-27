@@ -1,3 +1,29 @@
+"
+I am a hierarchical, event-driven state machine: I hold a set of states and transitions, track the current state, and dispatch events to it.
+
+Responsibility:
+- I own the collection of states (stateDict) and transitions (transDict), keyed by id
+- I track the current state and the designated start state, and drive state entry/exit on changes
+- I dispatch incoming events to the current state and notify any registered listener state machines
+- I hold a shared context Dictionary that states and transitions can read and write
+
+Collaborators:
+- SsState: I look up states by id, and delegate #enter / #doActivity to the current state on every state change
+- SsTransition / SsDecision: created via #setAutoFrom:to: and #setDecisionFrom:if:trueTo:falseTo: to wire automatic/conditional transitions
+- SsEvent: events accepted by #handleEvent: are dispatched to the current state
+- SsEndState: automatically added on #initialize and used by #atEnd to detect completion
+
+Public API and Key Messages:
+- #addState: / #addTransition: - register a state or transition, wiring it back to me
+- #setStartStateTo: - designates and immediately enters the start state
+- #handleEvent: / #handleEvent:ifFailed: - dispatches an event (symbol or SsEvent) to the current state, running aBlock if unhandled
+- #start - resets to the start state and enters/activates it
+- #atEnd - true once the current state is the shared SsEndState
+
+Implementation Points:
+- stateDict/transDict/listeners are lazily initialized IdentityDictionary/OrderedCollection instances
+- Sub-state machines are supported: states can nest their own SsStateMachine (see SsState>>subStateMachine)
+"
 Class {
 	#name : 'SsStateMachine',
 	#superclass : 'Object',
@@ -64,8 +90,7 @@ SsStateMachine >> changeStateTo: aStateSymbol on: anEvent [
 
 { #category : 'accessing' }
 SsStateMachine >> context [
-	context isNil ifTrue: [context := Dictionary new].
-	^context
+	^context ifNil: [context := Dictionary new]
 ]
 
 { #category : 'accessing' }
@@ -118,8 +143,7 @@ SsStateMachine >> initialize [
 
 { #category : 'accessing' }
 SsStateMachine >> listeners [
-	listeners isNil ifTrue:[ listeners := OrderedCollection new].
-	^listeners
+	^listeners ifNil: [listeners := OrderedCollection new]
 ]
 
 { #category : 'accessing' }
@@ -131,8 +155,7 @@ SsStateMachine >> listeners: anOrderedCollection [
 SsStateMachine >> recurCurrentState [
 	| state |
 	state := self currentState.
-	state isNil
-		ifTrue: [^ self].
+	state ifNil: [^ self].
 	[state hasSubStates]
 		whileTrue: [state := state currentSubState].
 	^ state
@@ -206,8 +229,7 @@ SsStateMachine >> stateAt: aStateName put: aState [
 
 { #category : 'accessing' }
 SsStateMachine >> stateDict [
-	stateDict isNil ifTrue:[stateDict := IdentityDictionary new].
-	^stateDict
+	^stateDict ifNil: [stateDict := IdentityDictionary new]
 ]
 
 { #category : 'accessing' }
@@ -233,8 +255,7 @@ SsStateMachine >> transAt: aTransitionId put: aTransition [
 
 { #category : 'accessing' }
 SsStateMachine >> transDict [
-	transDict isNil ifTrue:[transDict := IdentityDictionary new].
-	^transDict
+	^transDict ifNil: [transDict := IdentityDictionary new]
 ]
 
 { #category : 'accessing' }
