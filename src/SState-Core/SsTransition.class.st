@@ -1,3 +1,24 @@
+"
+I represent a transition between two states in a state machine, optionally guarded by a condition and carrying an action to perform.
+
+Responsibility:
+- I know which state to move to next (nextStateId)
+- I optionally hold a guard condition that must evaluate true before I can fire
+- I optionally hold an action (block or message send) to execute when I activate
+
+Collaborators:
+- SsStateMachine: I ask it to change the current state to my nextStateId when I activate
+- SsState: states own me and activate me in response to matching events
+- SsDecision: subclass that picks nextStateId dynamically based on the evaluated action result
+
+Public API and Key Messages:
+- #activate - performs my action then changes the state machine's current state to nextStateId
+- #checkGuard - evaluates guardCondition (with context/event) to decide whether I may fire; true if no guard is set
+- #guarded:action:to: / #action:to: - instance-creation helpers for building a transition with or without a guard
+
+Implementation Points:
+- #action and #guardCondition are cull:cull: evaluated, so they may take 0, 1 (context) or 2 (context, event) arguments
+"
 Class {
 	#name : 'SsTransition',
 	#superclass : 'SsObject',
